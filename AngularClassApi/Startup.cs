@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace AngularClassApi
 {
@@ -23,7 +24,16 @@ namespace AngularClassApi
             services.AddControllers();
             services.AddSingleton<IProductRepository, ProductRepository>();
 
-            services.AddMvc();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Angular Class Api",
+                    Description = "Um simples exemplo de Asp.Net Core Web Api"
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +43,16 @@ namespace AngularClassApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true;
+            });
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minha API V1");
+            });
 
             app.UseRouting();
 
