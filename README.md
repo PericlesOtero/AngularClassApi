@@ -1,2 +1,2 @@
 # AngularClassApi
-API em ASP.NET Core para ser usada nas aulas, para que possar ser consumida pelo Angular ou qualquer outro front end.
+API developed in ASP.NET Core, to be used in classes, where it can be consumed by projects in Angular or any other front end.
