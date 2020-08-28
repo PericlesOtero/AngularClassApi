@@ -1,6 +1,5 @@
 ﻿using AngularClassApi.Models;
 using AngularClassApi.Repository;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AngularClassApi.Controllers
@@ -16,8 +15,7 @@ namespace AngularClassApi.Controllers
         }
 
         [Route("v1/product/")]
-        [HttpGet]
-        [AllowAnonymous]
+        [HttpGet]       
         public IActionResult Get()
         {
             try
@@ -32,7 +30,6 @@ namespace AngularClassApi.Controllers
 
         [Route("v1/product/{id:int}")]
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Get(int id)
         {
             try
@@ -47,7 +44,6 @@ namespace AngularClassApi.Controllers
 
         [Route("v1/product/")]
         [HttpPost]
-        [AllowAnonymous]
         public IActionResult Post([FromBody] ProductModel data)
         {
             if (!ModelState.IsValid)
@@ -71,7 +67,6 @@ namespace AngularClassApi.Controllers
 
         [Route("v1/product/")]
         [HttpPut]
-        [AllowAnonymous]
         public IActionResult Put([FromBody] ProductModel data)
         {
             if (!ModelState.IsValid)
@@ -93,7 +88,6 @@ namespace AngularClassApi.Controllers
 
         [Route("v1/product/{id:int}")]
         [HttpDelete]
-        [AllowAnonymous]
         public IActionResult Delete(int id)
         {
             try
