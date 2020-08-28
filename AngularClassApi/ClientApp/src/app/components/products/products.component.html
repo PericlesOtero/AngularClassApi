@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let product of products" (click)="onProductSelect(product)">{{product.name}}</li>
+</ul>
+
+<ng-container *ngIf="productSelected">
+  <app-product-detail [product]="productSelected"></app-product-detail>
+</ng-container>
